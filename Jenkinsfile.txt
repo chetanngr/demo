@@ -1,27 +1,22 @@
 pipeline {
-    agent any
-    stages {
-        stage('git repo & clean') {
-            steps {
-               bat "rmdir  /s /q TicketBookingServiceJunitTesting"
-                bat "git clone https://github.com/kishancs2020/TicketBookingServiceJunitTesting.git"
-                bat "mvn clean -f TicketBookingServiceJunitTesting"
-            }
+  agent any
+  stages {
+
+    stage('Stage 1') {
+      steps {
+        script {
+          echo 'Stage 1'
         }
-        stage('install') {
-            steps {
-                bat "mvn install -f TicketBookingServiceJunitTesting"
-            }
-        }
-        stage('test') {
-            steps {
-                bat "mvn test -f TicketBookingServiceJunitTesting"
-            }
-        }
-        stage('package') {
-            steps {
-                bat "mvn package -f TicketBookingServiceJunitTesting"
-            }
-        }
+      }
     }
+
+    stage('Stage 2') {
+      steps {
+        script {
+          echo 'Stage 2'
+        }
+      }
+    }
+
+  }
 }
